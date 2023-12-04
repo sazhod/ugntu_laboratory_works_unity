@@ -47,7 +47,6 @@ public class PlayerMove : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out raycastHit, Mathf.Infinity)) // получаем вектор направления туда, где была нажата кнопка мыши
             {
-                Debug.Log("Move");
                 // просчитываем паршрут до точки и перемещаемся туда
                 navMeshAgent.SetDestination(raycastHit.point);
             }

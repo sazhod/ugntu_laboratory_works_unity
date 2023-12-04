@@ -2,14 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.AI.Navigation;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class OpenCloseDoor : MonoBehaviour
 {
     [SerializeField] private Animator openandclose;
-    [SerializeField] private bool open;
     [SerializeField] private Transform Player;
     [SerializeField] private float useDistance;
-    
+
+    private bool open;
+
 
     private void Start()
     {
@@ -19,7 +21,7 @@ public class OpenCloseDoor : MonoBehaviour
     private void Update()
     {
         if (Player)
-        {
+        {   
             float dist = Vector3.Distance(Player.position, transform.position);
             if (dist < useDistance)
             {
@@ -33,18 +35,12 @@ public class OpenCloseDoor : MonoBehaviour
                 }
                 else
                 {
-                    if (open == true)
+                    if (Input.GetKeyDown(KeyCode.E))
                     {
-                        if (Input.GetKeyDown(KeyCode.E))
-                        {
-                            StartCoroutine(closing());
-                        }
+                        StartCoroutine(closing());
                     }
-
                 }
-
             }
-
         }
     }
 
